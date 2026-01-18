@@ -4,7 +4,7 @@ const CONFIG = {
     BRUSH_SIZE_AI: 5,
     GAME_DURATION: 25,
     MODEL_PATH: 'game_model_160.onnx',
-    CANVAS_SIZE: 400,
+    CANVAS_SIZE: 550,
     TARGET_SIZE: 160,
     SAFE_SIZE: 130,
     CONFIDENCE_THRESHOLD: 0.12
@@ -256,8 +256,8 @@ function handleMove(e) {
             const currX = Math.floor(state.lastX * (1 - alpha) + x * alpha);
             const currY = Math.floor(state.lastY * (1 - alpha) + y * alpha);
 
-            // Rải 8 hạt mỗi điểm
-            for (let j = 0; j < 8; j++) {
+            // Rải 3 hạt mỗi điểm (giảm từ 8 để tăng hiệu năng)
+            for (let j = 0; j < 3; j++) {
                 const spread = CONFIG.BRUSH_SIZE_DISPLAY + 2;
                 const offX = Math.floor(Math.random() * (spread * 2 + 1) - spread);
                 const offY = Math.floor(Math.random() * (spread * 2 + 1) - spread);
@@ -281,7 +281,10 @@ function handleMove(e) {
     state.lastY = y;
 
     updateDisplayCanvas();
-    predictImage();
+
+    // Debounce AI - chỉ chạy 10 lần/giây thay vì liên tục
+    clearTimeout(state.predictionTimeout);
+    state.predictionTimeout = setTimeout(predictImage, 100);
 }
 
 function handleEnd(e) {

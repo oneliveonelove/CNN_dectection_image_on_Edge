@@ -282,9 +282,9 @@ function handleMove(e) {
 
     updateDisplayCanvas();
 
-    // Debounce AI - chỉ chạy 10 lần/giây thay vì liên tục
+    // Debounce AI - chỉ chạy 2 lần/giây (mượt hơn nhiều!)
     clearTimeout(state.predictionTimeout);
-    state.predictionTimeout = setTimeout(predictImage, 100);
+    state.predictionTimeout = setTimeout(predictImage, 500);
 }
 
 function handleEnd(e) {
@@ -297,7 +297,7 @@ function handleEnd(e) {
     predictImage();
 }
 
-// Event listeners
+// Event listenersa
 canvas.addEventListener('mousedown', handleStart);
 canvas.addEventListener('mousemove', handleMove);
 canvas.addEventListener('mouseup', handleEnd);

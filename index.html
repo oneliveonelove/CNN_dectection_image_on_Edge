@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI Drawing Game - Trò Chơi Vẽ AI</title>
+    <meta name="description" content="Vẽ tranh và để AI đoán - Game vẽ hình thông minh">
+    <meta name="theme-color" content="#667eea">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Splash Screen với Background -->
+    <div id="splashScreen" class="splash-screen">
+        <div class="splash-content">
+            <h1 class="splash-title">🎨 AI Drawing Game</h1>
+            <p class="splash-subtitle">Vẽ và để AI đoán!</p>
+            <button id="splashStartBtn" class="splash-start-btn">BẮT ĐẦU CHƠI</button>
+        </div>
+    </div>
+
+    <!-- Game Container (Fullscreen khi chơi) -->
+    <div class="game-container" id="gameContainer" style="display: none;">
+        <div class="header">
+            <div class="status-text" id="statusText">
+                Nhấn nút BẮT ĐẦU để chơi!
+            </div>
+        </div>
+
+        <div class="game-area">
+            <canvas id="canvas" width="400" height="400"></canvas>
+            <div class="ai-preview">
+                <div class="ai-preview-title">AI nhìn thấy:</div>
+                <canvas id="aiPreview" width="140" height="140"></canvas>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn-start">BẮT ĐẦU</button>
+            <button id="clearBtn" class="btn-clear" style="display: none;">XÓA</button>
+        </div>
+
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="spinner"></div>
+            <div class="loading-text">Đang tải AI Model...</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.16.3/dist/ort.min.js"></script>
+    <script>
+        // Splash Screen Handler
+        document.getElementById('splashStartBtn').addEventListener('click', function () {
+            // Ẩn splash screen
+            document.getElementById('splashScreen').classList.add('hidden');
+
+            // Hiện game container
+            setTimeout(() => {
+                document.getElementById('splashScreen').style.display = 'none';
+                document.getElementById('gameContainer').style.display = 'flex';
+            }, 500);
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>

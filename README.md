@@ -26,7 +26,6 @@
 
 ### **Bước 2:** Upload files
 ```
-Kéo thả 5 files vào:
 ✅ index.html
 ✅ style.css
 ✅ app.js  
@@ -36,12 +35,6 @@ Kéo thả 5 files vào:
 
 ### **Bước 3:** Bật GitHub Pages
 ```
-Settings → Pages
-→ Branch: main → /root → Save
-→ Chờ 2 phút → Lấy link!
-```
-
----
 
 ## 📱 Trên điện thoại
 
@@ -73,4 +66,5 @@ Máy tính • Máy ảnh • Lửa trại • Lâu đài • Đèn chùm
 ---
 
 Made with ❤️ in Vietnam
+
 
